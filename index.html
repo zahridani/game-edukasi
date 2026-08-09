@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+      initial-scale=1.0,
+      maximum-scale=1.0,
+      user-scalable=no">
+
+<title>Game Edukasi</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    min-height:100%;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff8c00,
+            #0066ff
+        );
+
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+}
+
+
+/* ==============================
+   KARTU UTAMA
+============================== */
+
+.container{
+
+    width:min(850px,100%);
+
+    background:
+        rgba(255,255,255,.97);
+
+    border-radius:28px;
+
+    padding:45px 35px;
+
+    text-align:center;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.30);
+}
+
+
+/* ==============================
+   TROFI
+============================== */
+
+.trophy{
+
+    font-size:
+        clamp(65px,12vw,110px);
+
+    margin-bottom:5px;
+
+    animation:
+        bounce 2s infinite;
+}
+
+@keyframes bounce{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+
+/* ==============================
+   JUDUL
+============================== */
+
+h1{
+
+    margin:
+        0 0 10px;
+
+    font-family:
+        "Arial Black",
+        Impact,
+        Arial,
+        sans-serif;
+
+    font-size:
+        clamp(34px,7vw,62px);
+
+    font-weight:900;
+
+    color:#2563eb;
+
+    letter-spacing:2px;
+
+    text-shadow:
+        3px 3px 0 #f59e0b;
+}
+
+
+.subtitle{
+
+    font-size:
+        clamp(16px,3vw,21px);
+
+    color:#475569;
+
+    margin:
+        0 0 30px;
+}
+
+
+/* ==============================
+   GAME CARD
+============================== */
+
+.game-card{
+
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #fff7ed
+        );
+
+    border:
+        3px solid #2563eb;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    margin-bottom:20px;
+}
+
+.game-icon{
+
+    font-size:60px;
+
+    margin-bottom:5px;
+}
+
+.game-name{
+
+    font-size:
+        clamp(24px,5vw,34px);
+
+    font-weight:900;
+
+    color:#172033;
+
+    margin:
+        5px 0 20px;
+}
+
+
+/* ==============================
+   TOMBOL
+============================== */
+
+.buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+}
+
+.btn{
+
+    min-width:210px;
+
+    min-height:58px;
+
+    padding:
+        14px 24px;
+
+    border:0;
+
+    border-radius:14px;
+
+    font-size:19px;
+
+    font-weight:bold;
+
+    color:white;
+
+    cursor:pointer;
+
+    text-decoration:none;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:
+        transform .15s,
+        filter .15s;
+}
+
+.btn:hover{
+
+    filter:
+        brightness(.93);
+
+    transform:
+        translateY(-2px);
+}
+
+.btn:active{
+
+    transform:
+        scale(.95);
+}
+
+
+/* MAIN */
+
+.btn-main{
+
+    background:#2563eb;
+
+    box-shadow:
+        0 6px 15px
+        rgba(37,99,235,.3);
+}
+
+
+/* DOWNLOAD */
+
+.btn-download{
+
+    background:#f59e0b;
+
+    box-shadow:
+        0 6px 15px
+        rgba(245,158,11,.3);
+}
+
+
+/* ==============================
+   FOOTER
+============================== */
+
+.footer{
+
+    margin-top:25px;
+
+    color:#64748b;
+
+    font-size:14px;
+}
+
+
+/* ==============================
+   HP
+============================== */
+
+@media(max-width:600px){
+
+    body{
+
+        padding:10px;
+
+        align-items:flex-start;
+    }
+
+    .container{
+
+        margin-top:10px;
+
+        padding:
+            25px 15px;
+
+        border-radius:20px;
+    }
+
+    .trophy{
+
+        font-size:70px;
+    }
+
+    h1{
+
+        font-size:34px;
+
+        letter-spacing:1px;
+    }
+
+    .subtitle{
+
+        font-size:14px;
+
+        margin-bottom:20px;
+    }
+
+    .game-card{
+
+        padding:18px 12px;
+
+        border-radius:17px;
+    }
+
+    .game-icon{
+
+        font-size:48px;
+    }
+
+    .game-name{
+
+        font-size:24px;
+
+        margin-bottom:16px;
+    }
+
+    .buttons{
+
+        flex-direction:column;
+
+        gap:10px;
+    }
+
+    .btn{
+
+        width:100%;
+
+        min-width:0;
+
+        min-height:54px;
+
+        font-size:17px;
+    }
+
+    .footer{
+
+        margin-top:18px;
+
+        font-size:12px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- TROFI -->
+
+    <div class="trophy">
+        🏆
+    </div>
+
+
+    <!-- JUDUL -->
+
+    <h1>
+        GAME EDUKASI
+    </h1>
+
+
+    <p class="subtitle">
+        Belajar sambil bermain! 🎮📚
+    </p>
+
+
+    <!-- GAME PERKALIAN -->
+
+    <div class="game-card">
+
+        <div class="game-icon">
+            ✖️
+        </div>
+
+        <div class="game-name">
+            GAME PERKALIAN
+        </div>
+
+
+        <div class="buttons">
+
+
+            <!-- MAIN -->
+
+            <a
+                class="btn btn-main"
+                href="game-perkalian.html">
+
+                ▶️ MAIN GAME PERKALIAN
+
+            </a>
+
+
+            <!-- DOWNLOAD -->
+
+            <a
+                class="btn btn-download"
+                href="game-perkalian.html"
+                download="game-perkalian.html">
+
+                ⬇️ DOWNLOAD KODE GAME PERKALIAN
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+
+        🎓 Game pembelajaran untuk siswa
+
+    </div>
+
+
+</div>
+
+
+</body>
+</html>
