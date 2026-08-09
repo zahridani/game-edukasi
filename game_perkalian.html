@@ -11,717 +11,954 @@ maximum-scale=1.0, user-scalable=no">
 
 <style>
 
-/* =========================
+/* =====================================================
    DASAR
-========================= */
+===================================================== */
 
-*{
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
-html,body{
-    margin:0;
-    padding:0;
-    min-height:100%;
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
 }
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:linear-gradient(135deg,#ff8c00,#0066ff);
-    color:white;
-    overflow-x:hidden;
-    touch-action:manipulation;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff8c00,
+            #0066ff
+        );
+
+    color: white;
+    overflow-x: hidden;
+
+    touch-action: manipulation;
 }
 
 
-/* =========================
+/* =====================================================
    HALAMAN
-========================= */
+===================================================== */
 
-.page{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
+.page {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
 }
 
-.card{
-    width:min(1150px,100%);
-    background:rgba(255,255,255,.97);
-    color:#172033;
-    border-radius:22px;
-    padding:30px;
-    box-shadow:0 20px 50px rgba(0,0,0,.3);
-    text-align:center;
+.card {
+    width: min(1150px, 100%);
+
+    background: rgba(255,255,255,.97);
+
+    color: #172033;
+
+    border-radius: 22px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.3);
+
+    text-align: center;
 }
 
 
-/* =========================
+/* =====================================================
    JUDUL
-========================= */
+===================================================== */
 
-.game-title{
-    font-family:"Arial Black",Impact,Arial,sans-serif;
-    font-size:clamp(32px,5vw,52px);
-    font-weight:900;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    color:#2563eb;
+.game-title {
+
+    font-family:
+        "Arial Black",
+        Impact,
+        Arial,
+        sans-serif;
+
+    font-size:
+        clamp(32px,5vw,52px);
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: #2563eb;
 
     text-shadow:
         3px 3px 0 #f59e0b,
         5px 5px 0 rgba(0,0,0,.15);
 
-    margin:0 0 20px;
+    margin:
+        0 0 20px;
 }
 
 
-/* =========================
+/* =====================================================
    TOMBOL MASUK
-========================= */
+===================================================== */
 
-.btn-masuk{
-    border:0;
-    padding:18px 60px;
-    min-height:60px;
+.btn-masuk {
 
-    font-size:24px;
-    font-weight:bold;
+    border: 0;
 
-    border-radius:14px;
-    cursor:pointer;
+    padding:
+        18px 60px;
 
-    background:#2563eb;
-    color:white;
+    min-height: 60px;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    background: #2563eb;
+
+    color: white;
 
     box-shadow:
-        0 6px 15px rgba(37,99,235,.35);
+        0 6px 15px
+        rgba(37,99,235,.35);
 }
 
-.btn-masuk:active{
-    transform:scale(.96);
+.btn-masuk:hover {
+    background: #1d4ed8;
 }
 
-#gamePage{
-    display:none;
+.btn-masuk:active {
+    transform: scale(.96);
+}
+
+#gamePage {
+    display: none;
 }
 
 
-/* =========================
+/* =====================================================
    FORM SOAL
-========================= */
+===================================================== */
 
-.forms{
-    display:flex;
-    gap:8px;
+.forms {
 
-    justify-content:center;
-    align-items:flex-start;
+    display: flex;
 
-    margin:8px 0 12px;
+    gap: 8px;
 
-    width:100%;
+    justify-content: center;
+
+    align-items: flex-start;
+
+    margin:
+        8px 0 12px;
+
+    width: 100%;
 }
 
 .input-box,
-.answer-box{
-    width:190px;
-    flex:1 1 150px;
-    max-width:220px;
+.answer-box {
+
+    width: 190px;
+
+    flex:
+        1 1 150px;
+
+    max-width: 220px;
 }
 
 .input-box label,
-.answer-box label{
-    display:block;
+.answer-box label {
 
-    font-weight:bold;
+    display: block;
 
-    margin-bottom:6px;
+    font-weight: bold;
 
-    font-size:17px;
+    margin-bottom: 6px;
+
+    font-size: 17px;
 }
 
 .input-box input,
-.answer-box input{
-    width:100%;
-    height:62px;
+.answer-box input {
 
-    text-align:center;
+    width: 100%;
 
-    font-size:30px;
-    font-weight:bold;
+    height: 62px;
 
-    border:3px solid #cbd5e1;
-    border-radius:12px;
+    text-align: center;
 
-    background:#f8fafc;
-    color:#172033;
+    font-size: 30px;
+
+    font-weight: bold;
+
+    border:
+        3px solid #cbd5e1;
+
+    border-radius: 12px;
+
+    background: #f8fafc;
+
+    color: #172033;
 }
 
-.answer-box input{
-    border-color:#f59e0b;
-    background:#fffbeb;
+.answer-box input {
+
+    border-color: #f59e0b;
+
+    background: #fffbeb;
 }
 
 
-/* =========================
+/* =====================================================
    TANDA X DAN =
-========================= */
+===================================================== */
 
-.operator{
-    display:flex;
+.operator {
 
-    align-items:center;
-    justify-content:center;
+    display: flex;
 
-    font-size:38px;
-    font-weight:900;
+    align-items: center;
 
-    color:#2563eb;
+    justify-content: center;
 
-    padding-top:35px;
+    font-size: 38px;
 
-    min-width:32px;
+    font-weight: 900;
+
+    color: #2563eb;
+
+    padding-top: 35px;
+
+    min-width: 32px;
 }
 
-.equals{
-    color:#f59e0b;
+.equals {
+    color: #f59e0b;
 }
 
 
-/* =========================
+/* =====================================================
    RESET ANGKA
-========================= */
+===================================================== */
 
-.reset-number-btn{
-    width:100%;
+.reset-number-btn {
 
-    min-height:40px;
+    width: 100%;
 
-    margin-top:7px;
+    min-height: 40px;
 
-    padding:7px 8px;
+    margin-top: 7px;
 
-    border:0;
-    border-radius:9px;
+    padding: 7px 8px;
 
-    background:#64748b;
-    color:white;
+    border: 0;
 
-    font-size:12px;
-    font-weight:bold;
+    border-radius: 9px;
 
-    cursor:pointer;
+    background: #64748b;
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.reset-number-btn:hover {
+    background: #475569;
 }
 
 
-/* =========================
+/* =====================================================
    CEK JAWABAN
-========================= */
+===================================================== */
 
-.answer-btn{
-    width:100%;
+.answer-btn {
 
-    min-height:50px;
+    width: 100%;
 
-    margin-top:7px;
+    min-height: 50px;
 
-    padding:10px;
+    margin-top: 7px;
 
-    border:0;
-    border-radius:10px;
+    padding: 10px;
 
-    background:#f59e0b;
-    color:white;
+    border: 0;
 
-    font-weight:bold;
-    font-size:17px;
+    border-radius: 10px;
 
-    cursor:pointer;
+    background: #f59e0b;
+
+    color: white;
+
+    font-weight: bold;
+
+    font-size: 17px;
+
+    cursor: pointer;
+}
+
+.answer-btn:hover {
+    background: #d97706;
 }
 
 
-/* =========================
+/* =====================================================
    RESET GAME
-========================= */
+===================================================== */
 
-.reset-game-row{
-    margin:5px 0 8px;
+.reset-game-row {
+    margin: 5px 0 8px;
 }
 
-.reset-game{
-    min-height:46px;
+.reset-game {
 
-    padding:9px 30px;
+    min-height: 46px;
 
-    border:0;
-    border-radius:9px;
+    padding:
+        9px 30px;
 
-    background:#64748b;
-    color:white;
+    border: 0;
 
-    font-size:16px;
-    font-weight:bold;
+    border-radius: 9px;
 
-    cursor:pointer;
+    background: #64748b;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
 }
+
+.reset-game:hover {
+    background: #475569;
+}
+
+
+/* =====================================================
+   EFEK TEKAN
+===================================================== */
 
 .reset-number-btn:active,
 .reset-game:active,
-.answer-btn:active{
-    transform:scale(.96);
+.answer-btn:active {
+
+    transform:
+        scale(.96);
 }
 
 
-/* =========================
-   HASIL BENAR / SALAH
-========================= */
+/* =====================================================
+   FEEDBACK
+===================================================== */
 
-.feedback{
-    min-height:58px;
+.feedback {
 
-    font-size:clamp(24px,4vw,38px);
+    min-height: 58px;
 
-    font-weight:900;
+    font-size:
+        clamp(24px,4vw,38px);
 
-    margin:5px 0 12px;
+    font-weight: 900;
 
-    font-family:"Arial Black",Impact,Arial,sans-serif;
+    margin:
+        5px 0 12px;
 
-    letter-spacing:1px;
+    font-family:
+        "Arial Black",
+        Impact,
+        Arial,
+        sans-serif;
 
-    text-transform:uppercase;
+    letter-spacing: 1px;
 
-    transition:transform .25s ease;
+    text-transform: uppercase;
+
+    transition:
+        transform .25s ease;
 }
 
-.feedback.show{
-    transform:scale(1.06);
+.feedback.show {
+
+    transform:
+        scale(1.06);
 }
 
 
-/* =========================
-   3 KOTAK GAME
-========================= */
+/* =====================================================
+   3 KOTAK ANGKA
+===================================================== */
 
-.boxes{
-    display:grid;
+.boxes {
+
+    display: grid;
 
     grid-template-columns:
         repeat(3,1fr);
 
-    gap:16px;
+    gap: 16px;
 
-    margin-top:8px;
+    margin-top: 8px;
 }
 
 
-/* =========================
+/* =====================================================
    KOTAK ANGKA
-========================= */
+===================================================== */
 
-.number-box{
-    border:3px solid #2563eb;
+.number-box {
 
-    border-radius:18px;
+    border:
+        3px solid #2563eb;
 
-    padding:15px;
+    border-radius: 18px;
 
-    background:#eff6ff;
+    padding: 15px;
+
+    background: #eff6ff;
 }
 
-.number-box.b{
-    border-color:#16a34a;
-    background:#f0fdf4;
+.number-box.b {
+
+    border-color:
+        #16a34a;
+
+    background:
+        #f0fdf4;
 }
 
-.number-box.answer{
-    border-color:#f59e0b;
-    background:#fffbeb;
+.number-box.answer {
+
+    border-color:
+        #f59e0b;
+
+    background:
+        #fffbeb;
 }
 
-.number-box h2{
-    margin:0 0 12px;
+.number-box h2 {
+
+    margin:
+        0 0 12px;
 
     font-size:
         clamp(16px,2.2vw,22px);
 }
 
 
-/* =========================
+/* =====================================================
    GRID ANGKA
-========================= */
+===================================================== */
 
-.number-grid{
-    display:grid;
+.number-grid {
+
+    display: grid;
 
     grid-template-columns:
         repeat(3,1fr);
 
-    gap:8px;
+    gap: 8px;
 }
 
-.number-btn{
-    width:100%;
+.number-btn {
 
-    min-height:62px;
+    width: 100%;
 
-    border:0;
+    min-height: 62px;
 
-    border-radius:11px;
+    border: 0;
 
-    background:#2563eb;
+    border-radius: 11px;
 
-    color:white;
+    background:
+        #2563eb;
 
-    font-size:26px;
-    font-weight:bold;
+    color: white;
 
-    cursor:pointer;
+    font-size: 26px;
 
-    touch-action:manipulation;
-    user-select:none;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    touch-action: manipulation;
+
+    user-select: none;
 }
 
-.number-box.b .number-btn{
-    background:#16a34a;
+.number-box.b .number-btn {
+    background:
+        #16a34a;
 }
 
-.number-box.answer .number-btn{
-    background:#f59e0b;
+.number-box.answer .number-btn {
+    background:
+        #f59e0b;
 }
 
-.number-btn:active{
-    transform:scale(.92);
+.number-btn:hover {
+    filter: brightness(.92);
+}
 
-    filter:brightness(.85);
+.number-btn:active {
+
+    transform:
+        scale(.92);
+
+    filter:
+        brightness(.85);
 }
 
 
-/* tombol 0 di tengah */
+/* =====================================================
+   TOMBOL 0
+===================================================== */
 
-.zero-button{
-    grid-column:2;
+.zero-button {
+    grid-column: 2;
 }
 
 
-/* =========================
+/* =====================================================
    TABLET / PID
-========================= */
+===================================================== */
 
-@media(min-width:651px)
-and (max-width:1200px){
+@media
+(min-width:651px)
+and (max-width:1200px) {
 
-    .card{
-        max-width:1100px;
-        padding:24px;
+    .card {
+
+        max-width: 1100px;
+
+        padding: 24px;
     }
 
-    .number-btn{
-        min-height:68px;
-        font-size:29px;
+    .number-btn {
+
+        min-height: 68px;
+
+        font-size: 29px;
     }
 }
 
 
-/* ==================================================
-   HP / LAYAR KECIL
-================================================== */
+/* =====================================================
+   HP
+===================================================== */
 
-@media(max-width:650px){
+@media(max-width:650px) {
 
-    body{
-        overflow-y:auto;
+    body {
+        overflow-y: auto;
     }
 
-    .page{
-        align-items:flex-start;
+    .page {
 
-        padding:8px;
+        align-items:
+            flex-start;
+
+        padding:
+            6px;
     }
 
-    .card{
-        padding:14px;
+    .card {
 
-        border-radius:16px;
+        padding:
+            10px;
+
+        border-radius:
+            14px;
     }
 
 
     /* JUDUL HP */
 
-    .game-title{
-        font-size:28px;
+    .game-title {
 
-        letter-spacing:1px;
+        font-size:
+            25px;
 
-        margin-bottom:14px;
+        letter-spacing:
+            .5px;
+
+        margin:
+            0 0 8px;
+
+        text-shadow:
+            2px 2px 0 #f59e0b,
+            3px 3px 0 rgba(0,0,0,.12);
     }
 
 
-    .card > p{
-        margin:7px 0 14px;
+    .card > p {
 
-        font-size:14px;
+        margin:
+            4px 0 8px;
+
+        font-size:
+            12px;
     }
 
 
-    .btn-masuk{
-        padding:14px 42px;
+    /* TOMBOL MASUK */
 
-        min-height:52px;
+    .btn-masuk {
 
-        font-size:21px;
+        padding:
+            12px 36px;
+
+        min-height:
+            48px;
+
+        font-size:
+            19px;
     }
 
 
-    /* FORM DI HP */
+    /* FORM HP */
 
-    .forms{
-        display:grid;
+    .forms {
 
-        grid-template-columns:
-            minmax(0,1fr)
-            28px
-            minmax(0,1fr);
-
-        gap:5px;
-
-        align-items:start;
-
-        margin:5px 0 8px;
-    }
-
-
-    .input-box{
-        width:auto;
-
-        max-width:none;
-
-        min-width:0;
-    }
-
-
-    /* JAWABAN DI BARIS SENDIRI */
-
-    .answer-box{
-        width:auto;
-
-        max-width:none;
-
-        grid-column:1 / -1;
-
-        margin-top:3px;
-    }
-
-
-    .input-box label,
-    .answer-box label{
-        font-size:13px;
-
-        margin-bottom:4px;
-    }
-
-
-    .input-box input,
-    .answer-box input{
-
-        height:52px;
-
-        font-size:25px;
-
-        border-width:2px;
-    }
-
-
-    /* TANDA X */
-
-    .operator{
-
-        font-size:28px;
-
-        min-width:0;
-
-        padding-top:29px;
-    }
-
-
-    /* TANDA = */
-
-    .equals{
-        display:none;
-    }
-
-
-    /* = di atas jawaban */
-
-    .answer-box:before{
-
-        content:"=";
-
-        display:block;
-
-        font-size:25px;
-
-        font-weight:900;
-
-        color:#f59e0b;
-
-        margin-bottom:2px;
-    }
-
-
-    /* RESET KECIL */
-
-    .reset-number-btn{
-
-        min-height:34px;
-
-        margin-top:5px;
-
-        padding:5px 4px;
-
-        font-size:10px;
-    }
-
-
-    /* CEK */
-
-    .answer-btn{
-
-        min-height:46px;
-
-        font-size:15px;
-
-        margin-top:5px;
-    }
-
-
-    /* RESET GAME */
-
-    .reset-game{
-
-        min-height:42px;
-
-        font-size:14px;
-
-        padding:8px 24px;
-    }
-
-
-    /* FEEDBACK */
-
-    .feedback{
-
-        min-height:50px;
-
-        font-size:23px;
-
-        margin:3px 0 8px;
-    }
-
-
-    /* KOTAK ANGKA */
-
-    .boxes{
-
-        grid-template-columns:1fr;
-
-        gap:10px;
-
-        margin-top:5px;
-    }
-
-
-    .number-box{
-
-        padding:10px;
-
-        border-width:2px;
-
-        border-radius:14px;
-    }
-
-
-    .number-box h2{
-
-        font-size:17px;
-
-        margin-bottom:9px;
-    }
-
-
-    .number-grid{
-
-        gap:6px;
-    }
-
-
-    .number-btn{
-
-        min-height:55px;
-
-        font-size:25px;
-
-        border-radius:9px;
-    }
-
-}
-
-
-/* ==================================================
-   HP SANGAT KECIL
-================================================== */
-
-@media(max-width:380px){
-
-    .card{
-        padding:10px;
-    }
-
-    .game-title{
-        font-size:24px;
-    }
-
-    .forms{
+        display: grid;
 
         grid-template-columns:
             minmax(0,1fr)
             24px
             minmax(0,1fr);
+
+        gap:
+            4px;
+
+        align-items:
+            start;
+
+        margin:
+            3px 0 5px;
+    }
+
+
+    .input-box {
+
+        width: auto;
+
+        max-width: none;
+
+        min-width: 0;
+    }
+
+
+    .answer-box {
+
+        width: auto;
+
+        max-width: none;
+
+        grid-column:
+            1 / -1;
+
+        margin-top:
+            1px;
+    }
+
+
+    .input-box label,
+    .answer-box label {
+
+        font-size:
+            11px;
+
+        margin-bottom:
+            2px;
+    }
+
+
+    .input-box input,
+    .answer-box input {
+
+        height:
+            44px;
+
+        font-size:
+            22px;
+
+        border-width:
+            2px;
+
+        border-radius:
+            9px;
+    }
+
+
+    /* TANDA X */
+
+    .operator {
+
+        font-size:
+            25px;
+
+        min-width:
+            0;
+
+        padding-top:
+            23px;
+    }
+
+
+    /* TANDA = */
+
+    .equals {
+        display: none;
+    }
+
+
+    .answer-box:before {
+
+        content: "=";
+
+        display: block;
+
+        font-size:
+            21px;
+
+        font-weight:
+            900;
+
+        color:
+            #f59e0b;
+
+        margin-bottom:
+            1px;
+    }
+
+
+    /* RESET ANGKA */
+
+    .reset-number-btn {
+
+        min-height:
+            28px;
+
+        margin-top:
+            3px;
+
+        padding:
+            3px 2px;
+
+        font-size:
+            8px;
+
+        border-radius:
+            6px;
+    }
+
+
+    /* CEK JAWABAN */
+
+    .answer-btn {
+
+        min-height:
+            42px;
+
+        font-size:
+            14px;
+
+        margin-top:
+            3px;
+
+        padding:
+            7px;
+    }
+
+
+    /* RESET GAME */
+
+    .reset-game-row {
+
+        margin:
+            3px 0 4px;
+    }
+
+    .reset-game {
+
+        min-height:
+            36px;
+
+        font-size:
+            12px;
+
+        padding:
+            6px 20px;
+
+        border-radius:
+            8px;
+    }
+
+
+    /* FEEDBACK */
+
+    .feedback {
+
+        min-height:
+            42px;
+
+        font-size:
+            19px;
+
+        margin:
+            2px 0 4px;
+
+        letter-spacing:
+            .5px;
+    }
+
+
+    /* KOTAK ANGKA */
+
+    .boxes {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            7px;
+
+        margin-top:
+            3px;
+    }
+
+
+    .number-box {
+
+        padding:
+            7px;
+
+        border-width:
+            2px;
+
+        border-radius:
+            11px;
+    }
+
+
+    .number-box h2 {
+
+        font-size:
+            15px;
+
+        margin:
+            0 0 6px;
+    }
+
+
+    /* TOMBOL ANGKA */
+
+    .number-grid {
+
+        gap:
+            4px;
+    }
+
+    .number-btn {
+
+        min-height:
+            48px;
+
+        font-size:
+            23px;
+
+        border-radius:
+            7px;
+    }
+
+}
+
+
+/* =====================================================
+   HP SANGAT KECIL
+===================================================== */
+
+@media(max-width:380px) {
+
+    .card {
+        padding:
+            8px;
+    }
+
+    .game-title {
+
+        font-size:
+            22px;
+    }
+
+    .forms {
+
+        grid-template-columns:
+            minmax(0,1fr)
+            21px
+            minmax(0,1fr);
     }
 
     .input-box input,
-    .answer-box input{
+    .answer-box input {
 
-        height:48px;
+        height:
+            42px;
 
-        font-size:22px;
+        font-size:
+            20px;
     }
 
-    .operator{
+    .operator {
 
-        font-size:25px;
+        font-size:
+            23px;
 
-        padding-top:27px;
+        padding-top:
+            22px;
     }
 
-    .number-btn{
+    .number-btn {
 
-        min-height:50px;
+        min-height:
+            46px;
 
-        font-size:23px;
+        font-size:
+            21px;
     }
 
-    .number-box h2{
+    .number-box h2 {
 
-        font-size:15px;
+        font-size:
+            14px;
     }
 
-    .feedback{
+    .feedback {
 
-        font-size:20px;
+        font-size:
+            18px;
     }
 
 }
@@ -733,9 +970,9 @@ and (max-width:1200px){
 <body>
 
 
-<!-- ==================================================
+<!-- =====================================================
      HALAMAN AWAL
-================================================== -->
+===================================================== -->
 
 <div id="homePage" class="page">
 
@@ -763,404 +1000,390 @@ and (max-width:1200px){
 
 
 
-<!-- ==================================================
+<!-- =====================================================
      HALAMAN GAME
-================================================== -->
+===================================================== -->
 
 <div id="gamePage" class="page">
 
 <div class="card">
 
 
-<h1 class="game-title">
-    🏆 GAME PERKALIAN 🏆
-</h1>
+    <h1 class="game-title">
+        🏆 GAME PERKALIAN 🏆
+    </h1>
 
 
+    <!-- =================================================
+         FORM SOAL
+    ================================================= -->
 
-<!-- FORM SOAL -->
-
-<div class="forms">
-
-
-    <!-- ANGKA PERTAMA -->
-
-    <div class="input-box">
-
-        <label>
-            ANGKA PERTAMA
-        </label>
-
-        <input
-            id="formA"
-            type="text"
-            readonly
-            placeholder="Kosong">
-
-        <button
-            class="reset-number-btn"
-            onclick="resetA()">
-
-            RESET ANGKA PERTAMA
-
-        </button>
-
-    </div>
+    <div class="forms">
 
 
+        <!-- ANGKA PERTAMA -->
 
-    <!-- X -->
+        <div class="input-box">
 
-    <div class="operator">
+            <label>
+                ANGKA PERTAMA
+            </label>
 
-        ×
+            <input
+                id="formA"
+                type="text"
+                readonly
+                placeholder="Kosong">
 
-    </div>
+            <button
+                class="reset-number-btn"
+                onclick="resetA()">
 
+                RESET ANGKA PERTAMA
 
+            </button>
 
-    <!-- ANGKA KEDUA -->
-
-    <div class="input-box">
-
-        <label>
-            ANGKA KEDUA
-        </label>
-
-        <input
-            id="formB"
-            type="text"
-            readonly
-            placeholder="Kosong">
-
-        <button
-            class="reset-number-btn"
-            onclick="resetB()">
-
-            RESET ANGKA KEDUA
-
-        </button>
-
-    </div>
+        </div>
 
 
+        <!-- X -->
 
-    <!-- = -->
-
-    <div class="operator equals">
-
-        =
-
-    </div>
+        <div class="operator">
+            ×
+        </div>
 
 
+        <!-- ANGKA KEDUA -->
 
-    <!-- JAWABAN -->
+        <div class="input-box">
 
-    <div class="answer-box">
+            <label>
+                ANGKA KEDUA
+            </label>
 
-        <label>
-            JAWABAN
-        </label>
+            <input
+                id="formB"
+                type="text"
+                readonly
+                placeholder="Kosong">
 
-        <input
-            id="hasil"
-            type="text"
-            readonly
-            placeholder="Pilih jawaban">
+            <button
+                class="reset-number-btn"
+                onclick="resetB()">
 
-        <button
-            class="reset-number-btn"
-            onclick="resetHasil()">
+                RESET ANGKA KEDUA
 
-            RESET JAWABAN
+            </button>
 
-        </button>
+        </div>
+
+
+        <!-- = -->
+
+        <div class="operator equals">
+            =
+        </div>
+
+
+        <!-- JAWABAN -->
+
+        <div class="answer-box">
+
+            <label>
+                JAWABAN
+            </label>
+
+            <input
+                id="hasil"
+                type="text"
+                readonly
+                placeholder="Pilih jawaban">
+
+            <button
+                class="reset-number-btn"
+                onclick="resetHasil()">
+
+                RESET JAWABAN
+
+            </button>
+
+        </div>
 
     </div>
 
-</div>
 
-
-
-<!-- CEK JAWABAN -->
-
-<button
-    class="answer-btn"
-    onclick="jawab()">
-
-    CEK JAWABAN
-
-</button>
-
-
-
-<!-- RESET GAME -->
-
-<div class="reset-game-row">
+    <!-- CEK JAWABAN -->
 
     <button
-        class="reset-game"
-        onclick="resetGame()">
+        class="answer-btn"
+        onclick="jawab()">
 
-        RESET GAME
+        CEK JAWABAN
 
     </button>
 
-</div>
 
+    <!-- RESET GAME -->
 
-
-<!-- FEEDBACK -->
-
-<div
-    id="feedback"
-    class="feedback">
-</div>
-
-
-
-<!-- ==================================================
-     PILIHAN ANGKA
-================================================== -->
-
-<div class="boxes">
-
-
-<!-- ==================================================
-     KOTAK A
-================================================== -->
-
-<div class="number-box">
-
-    <h2>
-        🔵 PILIH ANGKA PERTAMA
-    </h2>
-
-    <div class="number-grid">
+    <div class="reset-game-row">
 
         <button
-            class="number-btn"
-            onclick="pilihA(1)">
-            1
-        </button>
+            class="reset-game"
+            onclick="resetGame()">
 
-        <button
-            class="number-btn"
-            onclick="pilihA(2)">
-            2
-        </button>
+            RESET GAME
 
-        <button
-            class="number-btn"
-            onclick="pilihA(3)">
-            3
-        </button>
-
-        <button
-            class="number-btn"
-            onclick="pilihA(4)">
-            4
-        </button>
-
-        <button
-            class="number-btn"
-            onclick="pilihA(5)">
-            5
-        </button>
-
-        <button
-            class="number-btn"
-            onclick="pilihA(6)">
-            6
-        </button>
-
-        <button
-            class="number-btn"
-            onclick="pilihA(7)">
-            7
-        </button>
-
-        <button
-            class="number-btn"
-            onclick="pilihA(8)">
-            8
-        </button>
-
-        <button
-            class="number-btn"
-            onclick="pilihA(9)">
-            9
-        </button>
-
-        <button
-            class="number-btn zero-button"
-            onclick="pilihA(0)">
-            0
         </button>
 
     </div>
 
-</div>
 
+    <!-- FEEDBACK -->
 
-
-<!-- ==================================================
-     KOTAK B
-================================================== -->
-
-<div class="number-box b">
-
-    <h2>
-        🟢 PILIH ANGKA KEDUA
-    </h2>
-
-    <div class="number-grid">
-
-        <button
-            class="number-btn"
-            onclick="pilihB(1)">
-            1
-        </button>
-
-        <button
-            class="number-btn"
-            onclick="pilihB(2)">
-            2
-        </button>
-
-        <button
-            class="number-btn"
-            onclick="pilihB(3)">
-            3
-        </button>
-
-        <button
-            class="number-btn"
-            onclick="pilihB(4)">
-            4
-        </button>
-
-        <button
-            class="number-btn"
-            onclick="pilihB(5)">
-            5
-        </button>
-
-        <button
-            class="number-btn"
-            onclick="pilihB(6)">
-            6
-        </button>
-
-        <button
-            class="number-btn"
-            onclick="pilihB(7)">
-            7
-        </button>
-
-        <button
-            class="number-btn"
-            onclick="pilihB(8)">
-            8
-        </button>
-
-        <button
-            class="number-btn"
-            onclick="pilihB(9)">
-            9
-        </button>
-
-        <button
-            class="number-btn zero-button"
-            onclick="pilihB(0)">
-            0
-        </button>
-
+    <div
+        id="feedback"
+        class="feedback">
     </div>
 
-</div>
+
+    <!-- =================================================
+         PILIHAN ANGKA
+    ================================================= -->
+
+    <div class="boxes">
 
 
+        <!-- =================================================
+             KOTAK A
+        ================================================= -->
 
-<!-- ==================================================
-     KOTAK JAWABAN
-================================================== -->
+        <div class="number-box">
 
-<div class="number-box answer">
+            <h2>
+                🔵 PILIH ANGKA PERTAMA
+            </h2>
 
-    <h2>
-        🟠 PILIH JAWABAN
-    </h2>
+            <div class="number-grid">
 
-    <div class="number-grid">
+                <button
+                    class="number-btn"
+                    onclick="pilihA(1)">
+                    1
+                </button>
 
-        <button
-            class="number-btn"
-            onclick="pilihHasil(1)">
-            1
-        </button>
+                <button
+                    class="number-btn"
+                    onclick="pilihA(2)">
+                    2
+                </button>
 
-        <button
-            class="number-btn"
-            onclick="pilihHasil(2)">
-            2
-        </button>
+                <button
+                    class="number-btn"
+                    onclick="pilihA(3)">
+                    3
+                </button>
 
-        <button
-            class="number-btn"
-            onclick="pilihHasil(3)">
-            3
-        </button>
+                <button
+                    class="number-btn"
+                    onclick="pilihA(4)">
+                    4
+                </button>
 
-        <button
-            class="number-btn"
-            onclick="pilihHasil(4)">
-            4
-        </button>
+                <button
+                    class="number-btn"
+                    onclick="pilihA(5)">
+                    5
+                </button>
 
-        <button
-            class="number-btn"
-            onclick="pilihHasil(5)">
-            5
-        </button>
+                <button
+                    class="number-btn"
+                    onclick="pilihA(6)">
+                    6
+                </button>
 
-        <button
-            class="number-btn"
-            onclick="pilihHasil(6)">
-            6
-        </button>
+                <button
+                    class="number-btn"
+                    onclick="pilihA(7)">
+                    7
+                </button>
 
-        <button
-            class="number-btn"
-            onclick="pilihHasil(7)">
-            7
-        </button>
+                <button
+                    class="number-btn"
+                    onclick="pilihA(8)">
+                    8
+                </button>
 
-        <button
-            class="number-btn"
-            onclick="pilihHasil(8)">
-            8
-        </button>
+                <button
+                    class="number-btn"
+                    onclick="pilihA(9)">
+                    9
+                </button>
 
-        <button
-            class="number-btn"
-            onclick="pilihHasil(9)">
-            9
-        </button>
+                <button
+                    class="number-btn zero-button"
+                    onclick="pilihA(0)">
+                    0
+                </button>
 
-        <button
-            class="number-btn zero-button"
-            onclick="pilihHasil(0)">
-            0
-        </button>
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             KOTAK B
+        ================================================= -->
+
+        <div class="number-box b">
+
+            <h2>
+                🟢 PILIH ANGKA KEDUA
+            </h2>
+
+            <div class="number-grid">
+
+                <button
+                    class="number-btn"
+                    onclick="pilihB(1)">
+                    1
+                </button>
+
+                <button
+                    class="number-btn"
+                    onclick="pilihB(2)">
+                    2
+                </button>
+
+                <button
+                    class="number-btn"
+                    onclick="pilihB(3)">
+                    3
+                </button>
+
+                <button
+                    class="number-btn"
+                    onclick="pilihB(4)">
+                    4
+                </button>
+
+                <button
+                    class="number-btn"
+                    onclick="pilihB(5)">
+                    5
+                </button>
+
+                <button
+                    class="number-btn"
+                    onclick="pilihB(6)">
+                    6
+                </button>
+
+                <button
+                    class="number-btn"
+                    onclick="pilihB(7)">
+                    7
+                </button>
+
+                <button
+                    class="number-btn"
+                    onclick="pilihB(8)">
+                    8
+                </button>
+
+                <button
+                    class="number-btn"
+                    onclick="pilihB(9)">
+                    9
+                </button>
+
+                <button
+                    class="number-btn zero-button"
+                    onclick="pilihB(0)">
+                    0
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             KOTAK JAWABAN
+        ================================================= -->
+
+        <div class="number-box answer">
+
+            <h2>
+                🟠 PILIH JAWABAN
+            </h2>
+
+            <div class="number-grid">
+
+                <button
+                    class="number-btn"
+                    onclick="pilihHasil(1)">
+                    1
+                </button>
+
+                <button
+                    class="number-btn"
+                    onclick="pilihHasil(2)">
+                    2
+                </button>
+
+                <button
+                    class="number-btn"
+                    onclick="pilihHasil(3)">
+                    3
+                </button>
+
+                <button
+                    class="number-btn"
+                    onclick="pilihHasil(4)">
+                    4
+                </button>
+
+                <button
+                    class="number-btn"
+                    onclick="pilihHasil(5)">
+                    5
+                </button>
+
+                <button
+                    class="number-btn"
+                    onclick="pilihHasil(6)">
+                    6
+                </button>
+
+                <button
+                    class="number-btn"
+                    onclick="pilihHasil(7)">
+                    7
+                </button>
+
+                <button
+                    class="number-btn"
+                    onclick="pilihHasil(8)">
+                    8
+                </button>
+
+                <button
+                    class="number-btn"
+                    onclick="pilihHasil(9)">
+                    9
+                </button>
+
+                <button
+                    class="number-btn zero-button"
+                    onclick="pilihHasil(0)">
+                    0
+                </button>
+
+            </div>
+
+        </div>
 
     </div>
-
-</div>
-
-
-</div>
 
 </div>
 
@@ -1170,9 +1393,9 @@ and (max-width:1200px){
 
 <script>
 
-/* ==================================================
+/* =====================================================
    MASUK GAME
-================================================== */
+===================================================== */
 
 function masukGame(){
 
@@ -1181,13 +1404,13 @@ function masukGame(){
 
     document.getElementById("gamePage")
         .style.display = "flex";
+
 }
 
 
-
-/* ==================================================
-   PILIH ANGKA A
-================================================== */
+/* =====================================================
+   PILIH ANGKA PERTAMA
+===================================================== */
 
 function pilihA(angka){
 
@@ -1203,10 +1426,9 @@ function pilihA(angka){
 }
 
 
-
-/* ==================================================
-   PILIH ANGKA B
-================================================== */
+/* =====================================================
+   PILIH ANGKA KEDUA
+===================================================== */
 
 function pilihB(angka){
 
@@ -1222,10 +1444,9 @@ function pilihB(angka){
 }
 
 
-
-/* ==================================================
+/* =====================================================
    PILIH JAWABAN
-================================================== */
+===================================================== */
 
 function pilihHasil(angka){
 
@@ -1241,10 +1462,9 @@ function pilihHasil(angka){
 }
 
 
-
-/* ==================================================
-   RESET A
-================================================== */
+/* =====================================================
+   RESET ANGKA PERTAMA
+===================================================== */
 
 function resetA(){
 
@@ -1254,10 +1474,9 @@ function resetA(){
 }
 
 
-
-/* ==================================================
-   RESET B
-================================================== */
+/* =====================================================
+   RESET ANGKA KEDUA
+===================================================== */
 
 function resetB(){
 
@@ -1267,10 +1486,9 @@ function resetB(){
 }
 
 
-
-/* ==================================================
+/* =====================================================
    RESET JAWABAN
-================================================== */
+===================================================== */
 
 function resetHasil(){
 
@@ -1280,21 +1498,23 @@ function resetHasil(){
 }
 
 
-
-/* ==================================================
+/* =====================================================
    CEK JAWABAN
-================================================== */
+===================================================== */
 
 function jawab(){
 
     const a =
-        document.getElementById("formA").value;
+        document.getElementById("formA")
+        .value;
 
     const b =
-        document.getElementById("formB").value;
+        document.getElementById("formB")
+        .value;
 
     const hasil =
-        document.getElementById("hasil").value;
+        document.getElementById("hasil")
+        .value;
 
     const feedback =
         document.getElementById("feedback");
@@ -1303,7 +1523,7 @@ function jawab(){
     feedback.classList.remove("show");
 
 
-    /* BELUM PILIH ANGKA */
+    /* BELUM MEMILIH ANGKA */
 
     if(a === "" || b === ""){
 
@@ -1316,7 +1536,7 @@ function jawab(){
     }
 
 
-    /* BELUM PILIH JAWABAN */
+    /* BELUM MEMILIH JAWABAN */
 
     else if(hasil === ""){
 
@@ -1329,7 +1549,7 @@ function jawab(){
     }
 
 
-    /* BENAR */
+    /* JAWABAN BENAR */
 
     else if(
         Number(hasil) ===
@@ -1345,7 +1565,7 @@ function jawab(){
     }
 
 
-    /* SALAH */
+    /* JAWABAN SALAH */
 
     else{
 
@@ -1367,10 +1587,10 @@ function jawab(){
 }
 
 
-
-/* ==================================================
+/* =====================================================
    RESET GAME
-================================================== */
+   TETAP DI HALAMAN GAME
+===================================================== */
 
 function resetGame(){
 
@@ -1382,6 +1602,7 @@ function resetGame(){
 
     document.getElementById("hasil")
         .value = "";
+
 
     const feedback =
         document.getElementById("feedback");
