@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Game Perkalian</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    min-height:100%;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:linear-gradient(135deg,#ff8c00,#0066ff);
+    color:white;
+    overflow-x:hidden;
+    touch-action:manipulation;
+}
+
+.page{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.card{
+    width:min(1150px,100%);
+    background:rgba(255,255,255,.97);
+    color:#172033;
+    border-radius:22px;
+    padding:30px;
+    box-shadow:0 20px 50px rgba(0,0,0,.3);
+    text-align:center;
+}
+
+/* JUDUL */
+.game-title{
+    font-family:"Arial Black",Impact,Arial,sans-serif;
+    font-size:clamp(32px,5vw,52px);
+    font-weight:900;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#2563eb;
+    text-shadow:3px 3px 0 #f59e0b,5px 5px 0 rgba(0,0,0,.15);
+    margin:0 0 25px;
+}
+
+/* TOMBOL MASUK */
+.btn-masuk{
+    border:0;
+    padding:18px 60px;
+    min-height:60px;
+    font-size:24px;
+    font-weight:bold;
+    border-radius:14px;
+    cursor:pointer;
+    background:#2563eb;
+    color:white;
+    box-shadow:0 6px 15px rgba(37,99,235,.35);
+    touch-action:manipulation;
+}
+
+.btn-masuk:active{
+    transform:scale(.96);
+}
+
+#gamePage{
+    display:none;
+}
+
+/* FORM SOAL */
+.forms{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    align-items:flex-start;
+    margin:10px 0 15px;
+    width:100%;
+}
+
+.input-box,
+.answer-box{
+    width:190px;
+    flex:1 1 150px;
+    max-width:220px;
+}
+
+.input-box label,
+.answer-box label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:7px;
+    font-size:17px;
+}
+
+.input-box input,
+.answer-box input{
+    width:100%;
+    height:65px;
+    text-align:center;
+    font-size:30px;
+    font-weight:bold;
+    border:3px solid #cbd5e1;
+    border-radius:12px;
+    background:#f8fafc;
+    color:#172033;
+}
+
+.answer-box input{
+    border-color:#f59e0b;
+    background:#fffbeb;
+}
+
+/* TANDA × DAN = */
+.operator{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+    font-weight:900;
+    color:#2563eb;
+    padding-top:37px;
+    min-width:35px;
+}
+
+.equals{
+    color:#f59e0b;
+}
+
+/* TOMBOL RESET KECIL */
+.reset-number-btn{
+    width:100%;
+    min-height:42px;
+    margin-top:8px;
+    padding:8px 10px;
+    border:0;
+    border-radius:9px;
+    background:#64748b;
+    color:white;
+    font-size:13px;
+    font-weight:bold;
+    cursor:pointer;
+    touch-action:manipulation;
+}
+
+.reset-number-btn:hover{
+    background:#475569;
+}
+
+.reset-number-btn:active{
+    transform:scale(.96);
+}
+
+/* CEK JAWABAN */
+.answer-btn{
+    width:100%;
+    min-height:52px;
+    margin-top:8px;
+    padding:10px;
+    border:0;
+    border-radius:10px;
+    background:#f59e0b;
+    color:white;
+    font-weight:bold;
+    font-size:17px;
+    cursor:pointer;
+    touch-action:manipulation;
+}
+
+.answer-btn:active{
+    transform:scale(.97);
+}
+
+/* FEEDBACK */
+.feedback{
+    min-height:65px;
+    font-size:clamp(25px,4vw,38px);
+    font-weight:900;
+    margin:8px 0 18px;
+    font-family:"Arial Black",Impact,Arial,sans-serif;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    transition:transform .25s ease;
+}
+
+.feedback.show{
+    transform:scale(1.08);
+}
+
+/* RESET GAME */
+.reset-game-row{
+    margin:5px 0 12px;
+}
+
+.reset-game{
+    min-height:50px;
+    padding:10px 35px;
+    border:0;
+    border-radius:9px;
+    background:#64748b;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    touch-action:manipulation;
+}
+
+.reset-game:hover{
+    background:#475569;
+}
+
+.reset-game:active{
+    transform:scale(.96);
+}
+
+/* TIGA KOTAK */
+.boxes{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:10px;
+}
+
+.number-box{
+    border:3px solid #2563eb;
+    border-radius:18px;
+    padding:17px;
+    background:#eff6ff;
+}
+
+.number-box.b{
+    border-color:#16a34a;
+    background:#f0fdf4;
+}
+
+.number-box.answer{
+    border-color:#f59e0b;
+    background:#fffbeb;
+}
+
+.number-box h2{
+    margin:0 0 15px;
+    font-size:clamp(17px,2.3vw,23px);
+}
+
+/* GRID TOMBOL */
+.number-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.number-btn{
+    width:100%;
+    min-height:65px;
+    border:0;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    font-size:27px;
+    font-weight:bold;
+    cursor:pointer;
+    touch-action:manipulation;
+    user-select:none;
+}
+
+.number-box.b .number-btn{
+    background:#16a34a;
+}
+
+.number-box.answer .number-btn{
+    background:#f59e0b;
+}
+
+.number-btn:active{
+    transform:scale(.92);
+    filter:brightness(.85);
+}
+
+/* TOMBOL 0 DI TENGAH */
+.zero-button{
+    grid-column:2;
+}
+
+/* LAYAR SENTUH */
+@media(pointer:coarse){
+    .number-btn{
+        min-height:72px;
+        font-size:30px;
+    }
+
+    .reset-number-btn{
+        min-height:46px;
+    }
+
+    .reset-game{
+        min-height:55px;
+    }
+
+    .answer-btn{
+        min-height:56px;
+    }
+}
+
+/* TABLET / PID */
+@media(min-width:651px) and (max-width:1200px){
+    .card{
+        max-width:1100px;
+        padding:25px;
+    }
+
+    .number-btn{
+        min-height:70px;
+    }
+}
+
+/* HP */
+@media(max-width:800px){
+
+    body{
+        overflow-y:auto;
+    }
+
+    .page{
+        align-items:flex-start;
+        padding:12px;
+    }
+
+    .card{
+        padding:20px;
+        border-radius:18px;
+    }
+
+    .forms{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:9px;
+    }
+
+    .input-box{
+        width:100%;
+        max-width:none;
+    }
+
+    .answer-box{
+        width:100%;
+        max-width:none;
+        grid-column:1 / -1;
+    }
+
+    .operator{
+        font-size:35px;
+        padding-top:35px;
+    }
+
+    .boxes{
+        grid-template-columns:1fr;
+    }
+}
+
+/* HP KECIL */
+@media(max-width:430px){
+
+    .card{
+        padding:15px;
+    }
+
+    .game-title{
+        font-size:29px;
+        letter-spacing:1px;
+    }
+
+    .input-box input,
+    .answer-box input{
+        height:58px;
+        font-size:25px;
+    }
+
+    .operator{
+        font-size:32px;
+    }
+
+    .number-btn{
+        min-height:65px;
+        font-size:27px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     HALAMAN AWAL
+========================= -->
+
+<div id="homePage" class="page">
+
+    <div class="card">
+
+        <h1 class="game-title">
+            🏆 GAME PERKALIAN 🏆
+        </h1>
+
+        <p>
+            Klik tombol di bawah untuk memulai permainan.
+        </p>
+
+        <button class="btn-masuk" onclick="masukGame()">
+            🚀 MASUK
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     HALAMAN GAME
+========================= -->
+
+<div id="gamePage" class="page">
+
+    <div class="card">
+
+        <h1 class="game-title">
+            🏆 GAME PERKALIAN 🏆
+        </h1>
+
+
+        <!-- SOAL -->
+
+        <div class="forms">
+
+            <!-- ANGKA PERTAMA -->
+            <div class="input-box">
+
+                <label>ANGKA PERTAMA</label>
+
+                <input
+                    id="formA"
+                    type="text"
+                    readonly
+                    placeholder="Kosong">
+
+                <button
+                    class="reset-number-btn"
+                    onclick="resetA()">
+                    RESET ANGKA PERTAMA
+                </button>
+
+            </div>
+
+
+            <!-- X -->
+            <div class="operator">
+                ×
+            </div>
+
+
+            <!-- ANGKA KEDUA -->
+            <div class="input-box">
+
+                <label>ANGKA KEDUA</label>
+
+                <input
+                    id="formB"
+                    type="text"
+                    readonly
+                    placeholder="Kosong">
+
+                <button
+                    class="reset-number-btn"
+                    onclick="resetB()">
+                    RESET ANGKA KEDUA
+                </button>
+
+            </div>
+
+
+            <!-- = -->
+            <div class="operator equals">
+                =
+            </div>
+
+
+            <!-- JAWABAN -->
+            <div class="answer-box">
+
+                <label>JAWABAN</label>
+
+                <input
+                    id="hasil"
+                    type="text"
+                    readonly
+                    placeholder="Pilih jawaban">
+
+                <button
+                    class="reset-number-btn"
+                    onclick="resetHasil()">
+                    RESET JAWABAN
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- CEK -->
+        <button
+            class="answer-btn"
+            onclick="jawab()">
+            CEK JAWABAN
+        </button>
+
+
+        <!-- RESET GAME -->
+        <div class="reset-game-row">
+
+            <button
+                class="reset-game"
+                onclick="resetGame()">
+                RESET GAME
+            </button>
+
+        </div>
+
+
+        <!-- FEEDBACK -->
+        <div id="feedback" class="feedback"></div>
+
+
+        <!-- =========================
+             PILIHAN ANGKA
+        ========================= -->
+
+        <div class="boxes">
+
+
+            <!-- ANGKA PERTAMA -->
+            <div class="number-box">
+
+                <h2>
+                    🔵 PILIH ANGKA PERTAMA
+                </h2>
+
+                <div class="number-grid">
+
+                    <button class="number-btn" onclick="pilihA(1)">1</button>
+                    <button class="number-btn" onclick="pilihA(2)">2</button>
+                    <button class="number-btn" onclick="pilihA(3)">3</button>
+
+                    <button class="number-btn" onclick="pilihA(4)">4</button>
+                    <button class="number-btn" onclick="pilihA(5)">5</button>
+                    <button class="number-btn" onclick="pilihA(6)">6</button>
+
+                    <button class="number-btn" onclick="pilihA(7)">7</button>
+                    <button class="number-btn" onclick="pilihA(8)">8</button>
+                    <button class="number-btn" onclick="pilihA(9)">9</button>
+
+                    <button
+                        class="number-btn zero-button"
+                        onclick="pilihA(0)">
+                        0
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ANGKA KEDUA -->
+            <div class="number-box b">
+
+                <h2>
+                    🟢 PILIH ANGKA KEDUA
+                </h2>
+
+                <div class="number-grid">
+
+                    <button class="number-btn" onclick="pilihB(1)">1</button>
+                    <button class="number-btn" onclick="pilihB(2)">2</button>
+                    <button class="number-btn" onclick="pilihB(3)">3</button>
+
+                    <button class="number-btn" onclick="pilihB(4)">4</button>
+                    <button class="number-btn" onclick="pilihB(5)">5</button>
+                    <button class="number-btn" onclick="pilihB(6)">6</button>
+
+                    <button class="number-btn" onclick="pilihB(7)">7</button>
+                    <button class="number-btn" onclick="pilihB(8)">8</button>
+                    <button class="number-btn" onclick="pilihB(9)">9</button>
+
+                    <button
+                        class="number-btn zero-button"
+                        onclick="pilihB(0)">
+                        0
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- JAWABAN -->
+            <div class="number-box answer">
+
+                <h2>
+                    🟠 PILIH JAWABAN
+                </h2>
+
+                <div class="number-grid">
+
+                    <button class="number-btn" onclick="pilihHasil(1)">1</button>
+                    <button class="number-btn" onclick="pilihHasil(2)">2</button>
+                    <button class="number-btn" onclick="pilihHasil(3)">3</button>
+
+                    <button class="number-btn" onclick="pilihHasil(4)">4</button>
+                    <button class="number-btn" onclick="pilihHasil(5)">5</button>
+                    <button class="number-btn" onclick="pilihHasil(6)">6</button>
+
+                    <button class="number-btn" onclick="pilihHasil(7)">7</button>
+                    <button class="number-btn" onclick="pilihHasil(8)">8</button>
+                    <button class="number-btn" onclick="pilihHasil(9)">9</button>
+
+                    <button
+                        class="number-btn zero-button"
+                        onclick="pilihHasil(0)">
+                        0
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   MASUK
+========================= */
+
+function masukGame(){
+
+    document.getElementById("homePage").style.display = "none";
+
+    document.getElementById("gamePage").style.display = "flex";
+}
+
+
+/* =========================
+   PILIH ANGKA A
+   MAKSIMAL 2 DIGIT
+========================= */
+
+function pilihA(angka){
+
+    const form = document.getElementById("formA");
+
+    if(form.value.length < 2){
+
+        form.value += angka;
+    }
+}
+
+
+/* =========================
+   PILIH ANGKA B
+   MAKSIMAL 2 DIGIT
+========================= */
+
+function pilihB(angka){
+
+    const form = document.getElementById("formB");
+
+    if(form.value.length < 2){
+
+        form.value += angka;
+    }
+}
+
+
+/* =========================
+   PILIH JAWABAN
+   MAKSIMAL 4 DIGIT
+========================= */
+
+function pilihHasil(angka){
+
+    const form = document.getElementById("hasil");
+
+    if(form.value.length < 4){
+
+        form.value += angka;
+    }
+}
+
+
+/* =========================
+   RESET A
+========================= */
+
+function resetA(){
+
+    document.getElementById("formA").value = "";
+}
+
+
+/* =========================
+   RESET B
+========================= */
+
+function resetB(){
+
+    document.getElementById("formB").value = "";
+}
+
+
+/* =========================
+   RESET JAWABAN
+========================= */
+
+function resetHasil(){
+
+    document.getElementById("hasil").value = "";
+}
+
+
+/* =========================
+   CEK JAWABAN
+========================= */
+
+function jawab(){
+
+    const a =
+        document.getElementById("formA").value;
+
+    const b =
+        document.getElementById("formB").value;
+
+    const hasil =
+        document.getElementById("hasil").value;
+
+    const feedback =
+        document.getElementById("feedback");
+
+
+    feedback.classList.remove("show");
+
+
+    /* BELUM PILIH ANGKA */
+
+    if(a === "" || b === ""){
+
+        feedback.textContent =
+            "🔢 PILIH KEDUA ANGKA DULU!";
+
+        feedback.style.color =
+            "#f59e0b";
+
+        setTimeout(function(){
+
+            feedback.classList.add("show");
+
+        },20);
+
+        return;
+    }
+
+
+    /* BELUM PILIH JAWABAN */
+
+    if(hasil === ""){
+
+        feedback.textContent =
+            "🤔 PILIH JAWABANNYA DULU!";
+
+        feedback.style.color =
+            "#f59e0b";
+
+        setTimeout(function(){
+
+            feedback.classList.add("show");
+
+        },20);
+
+        return;
+    }
+
+
+    /* HITUNG */
+
+    const benar =
+        Number(a) * Number(b);
+
+
+    /* BENAR */
+
+    if(Number(hasil) === benar){
+
+        feedback.textContent =
+            "🎉 JAWABAN BENAR! HEBAT! 🏆";
+
+        feedback.style.color =
+            "#16a34a";
+
+    }
+
+
+    /* SALAH */
+
+    else{
+
+        feedback.textContent =
+            "😅 JAWABAN SALAH! COBA LAGI! 🌟";
+
+        feedback.style.color =
+            "#dc2626";
+    }
+
+
+    setTimeout(function(){
+
+        feedback.classList.add("show");
+
+    },20);
+}
+
+
+/* =========================
+   RESET GAME
+   TETAP DI HALAMAN GAME
+========================= */
+
+function resetGame(){
+
+    document.getElementById("formA").value = "";
+
+    document.getElementById("formB").value = "";
+
+    document.getElementById("hasil").value = "";
+
+    const feedback =
+        document.getElementById("feedback");
+
+    feedback.textContent = "";
+
+    feedback.classList.remove("show");
+}
+
+</script>
+
+</body>
+</html>
